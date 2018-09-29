@@ -23,6 +23,11 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
+app.get("/api/timestamp/", function(req, res){
+  var dateString = new Date();
+  res.json({unix: dateString.getTime(), utc: dateString.toUTCString()});
+
+});
 app.get("/api/timestamp/:date_string", function(req, res){
   var dateString = new Date(req.params.date_string);
   if(dateString){
